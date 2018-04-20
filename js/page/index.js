@@ -1,7 +1,7 @@
 /**
  *name：首页-index的JS文件
  *date：2018/02/07
- *author：Liu Li
+ *author：Lyrica
  *remarks：null
  */
 
@@ -19,22 +19,22 @@ function topSearchFn(){
 
     _topSearchId.onfocus = function(){
         this.setAttribute('value',"");
-    }
+    };
     _topSearchId.onblur = function(){
         this.setAttribute('value',topSearchVal);
-    }
+    };
 }
 // 产品导航 subNavId
 function subNavMenuFn(){
     var _subNavId   = gId('subNavId');
-    var _li         = subNavId.children;
+    var _li         = _subNavId.children;
     var _len        = _li.length;
     //console.log(_li);
     for(var i=0;i<_len-6;i++){
         // 鼠标移入
         _li[i].onmouseover = function(){
             this.children[1].style.display = 'block';
-        }
+        };
         // 鼠标移出
         _li[i].onmouseout = function(){
             this.children[1].style.display = 'none';
@@ -60,7 +60,7 @@ function sliderWrapFn(){
         }
         _ulId.style.left = -996*_inx + 'px';
 
-    }
+    };
     // 右按钮
     _rightBtnId.onclick = function(){
         if(_inx > 0){
@@ -69,12 +69,12 @@ function sliderWrapFn(){
             _inx = _ullen-1;
         }
         _ulId.style.left =  -996*_inx + 'px';
-    }
+    };
     // 小白点按钮
     for(var i=0; i<_pBtn.length; i++){
         _pBtn[i].onclick = function(){
             // 同步_inx的值，让小白点按钮与左右按钮保持一致。
-            _inx = this.getAttribute('inx')
+            _inx = this.getAttribute('inx');
             _ulId.style.left =  -996*_inx+ 'px';
         }
     }
