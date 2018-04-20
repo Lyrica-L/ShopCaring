@@ -1,81 +1,155 @@
 /************************
  *name：首页-index的JS文件
- *date：2018/02/07
+ *date：2018/02/08
  *author：Lyrica
  *remarks：null
  */
-
 /*
-    第一版的index.js
+ *改用jQ来实现
  */
 
-// header 搜索框
-function topSearchFn(){
-    var _topSearchId = gId('topSearchId');
-    //console.log(_topSearchId);
+// 首页header 搜索框
+ function topSearchFn(){
+     $('#topSearchId')
+         .attr('value',topSearchVal )
+         .on({
+             focus:function(){
+                 $(this).attr('value','');
+             },
+             blur:function(){
+                 $(this).attr('value',topSearchVal);
+             }
+         });
+ }
+// 生成左侧导航子菜单
+function createSubNavMenuFn(){
+    var _subNavId   = $('#subNavId');
+    var _data       = DATA_temp.subNavData;
+    var _dataLen    = _data.length;
 
-    // 页面打开时给搜索框赋值。
-    _topSearchId.setAttribute('value',topSearchVal);
-
-    _topSearchId.onfocus = function(){
-        this.setAttribute('value',"");
-    };
-    _topSearchId.onblur = function(){
-        this.setAttribute('value',topSearchVal);
-    };
-}
-// 产品导航 subNavId
-function subNavMenuFn(){
-    var _subNavId   = gId('subNavId');
-    var _li         = _subNavId.children;
-    var _len        = _li.length;
-    //console.log(_li);
-    for(var i=0;i<_len-6;i++){
-        // 鼠标移入
-        _li[i].onmouseover = function(){
-            this.children[1].style.display = 'block';
-        };
-        // 鼠标移出
-        _li[i].onmouseout = function(){
-            this.children[1].style.display = 'none';
-        }
+    //console.log( _dataLen );
+    for(var i=0;i<_dataLen;i++){
+        $('<li/>')
+            .html(function(){
+                var _this = $(this);
+                $('<p/>').html(_data[i].name).appendTo(_this);
+                $('<div/>',{
+                        'class':'popUpDiv'
+                    })
+                    //.addClass('popUpDiv')
+                    .html(function(){
+                        $('<ul/>')
+                            .html(function(){
+                                var _listLen = _data[i].list.length;
+                                for(j=0;j<_listLen;j++){
+                                    $('<li/>')
+                                        .html(_data[i].list[j])
+                                        .appendTo($(this))
+                                }
+                            })
+                            .appendTo($(this));
+                    })
+                    .appendTo(_this)
+            })
+            .appendTo(_subNavId)
     }
+    _subNavId
+        .children()
+        .on({
+            mouseover:function(){
+                $(this)
+                    .children('.popUpDiv')
+                    .show();
+            },
+            mouseout:function(){
+                $(this)
+                    .children('.popUpDiv')
+                    .hide();
+            }
+        });
 }
+
 // 首页 轮播图
 function sliderWrapFn(){
-    // 左右按钮
-    var _leftBtnId  = gId('leftBtnId');
-    var _rightBtnId = gId('rightBtnId');
-    var _ulId       = gId('ulId');
-    var _ullen      = ulId.children.length;
-    var _pointBtnId = gId('pointBtnId');
-    var _pBtn       = _pointBtnId.children;
-    var _inx        = 0;
+    var _data           = DATA_temp.imgUrl;
+    var _dataLen        = _data.length;
+
+    var _leftBtnId      = $('#leftBtnId');
+    var _rightBtnId     = $('#rightBtnId');
+
+    var _ulId           = $('#ulId');
+
+    var _pointBtnId     = $('#pointBtnId');
+    var _inx            = 0;
+
+    var _sliderPWId     = $('#sliderPWId');
+    var _sliderPWBgId   = $('#sliderPWBgId');
+
+    var _sliderPW_width = _dataLen * 27;
+    var _pointMarL      = -(_sliderPW_width/2)-5;
+
+    // 根据图片的数量，设置ul的宽度
+    _ulId.css('width',_dataLen * 997);
+
+    // 根据小白点数量设置宽度
+    _sliderPWId.css({
+        'width':_sliderPW_width,
+        'marginLeft':_pointMarL
+    });
+    _sliderPWBgId.css({
+        'width':_sliderPW_width,
+        'marginLeft':_pointMarL
+    });
+
+    // 生成轮播图列表dom节点
+    for(var i=0; i<_dataLen; i++){
+        $('<li/>')
+            .html('<img src='+ _data[i] +' />')
+            .appendTo( _ulId );
+    }
+    // 生成小白点li
+    for(var i=0; i<_dataLen; i++){
+        $('<li/>')
+            .appendTo( _pointBtnId );
+    }
+    // 获取小白点列表的li节点，它是一个集合
+    var _pBtn           = _pointBtnId.children();
     // 左按钮
-    _leftBtnId.onclick = function(){
-        if(_inx < _ullen-1){
+    _leftBtnId.on('click',function(){
+        if(_inx < (_dataLen-1)){
             _inx++;
         }else{
             _inx = 0;
         }
-        _ulId.style.left = -996*_inx + 'px';
-
-    };
+        _ulId.css('left',-996*_inx );
+        // 小白点的颜色跟随图片来切换
+        //_pBtn.eq(_inx).addClass('redBg').siblings().removeClass('redBg');
+        switchPointRedFn(_inx);
+    });
     // 右按钮
-    _rightBtnId.onclick = function(){
+    _rightBtnId.on('click',function(){
         if(_inx > 0){
             _inx--;
         }else{
-            _inx = _ullen-1;
+            _inx = (_dataLen-1);
         }
-        _ulId.style.left =  -996*_inx + 'px';
-    };
-    // 小白点按钮
-    for(var i=0; i<_pBtn.length; i++){
-        _pBtn[i].onclick = function(){
-            // 同步_inx的值，让小白点按钮与左右按钮保持一致。
-            _inx = this.getAttribute('inx');
-            _ulId.style.left =  -996*_inx+ 'px';
-        }
+        _ulId.css('left',-996*_inx );
+        // 小白点的颜色跟随图片来切换
+        //_pBtn.eq(_inx).addClass('redBg').siblings().removeClass('redBg');
+        switchPointRedFn(_inx);
+    });
+
+    function switchPointRedFn(_n){
+        _pBtn.eq(_n).addClass('redBg').siblings().removeClass('redBg');
     }
+    // 小白点的点击事件
+    _pBtn.on('click',function(){
+        var _this       = $(this);
+        _inx = _this.index();
+        _ulId.css('left',-996*_inx);
+        _this
+            .addClass('redBg')
+            .siblings()
+            .removeClass('redBg');
+    });
 }
