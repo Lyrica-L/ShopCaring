@@ -1,7 +1,7 @@
 /**************
 *name：公共样式
 *date：2018/01/31
-*author：刘丽
+*author：Lyrica
 *remarks：null
 */
 
@@ -23,5 +23,6 @@
     clear: both;
     height: 0;
     visibility: hidden;
+    overflow: hidden;
     content: ".";
 }
