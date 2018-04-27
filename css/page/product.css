@@ -42,7 +42,7 @@
 .smallImgList {
     position: relative; width: 500px; margin: 0 auto;
 }
-.smallImgList label,.smallImgList span {
+.smallImgList label, .smallImgList span {
     display: block;
     position: absolute; top: 10px;
     width: 30px; height: 55px;
@@ -55,7 +55,7 @@
 .smallImgList span {
     right: 0; 
 }
-.smallImgList label:hover,.smallImgList span:hover {
+.smallImgList label:hover, .smallImgList span:hover {
     background: #666; 
 }
 .smallImgList ul {
@@ -169,7 +169,7 @@
     color: #666;
     cursor: pointer;
 }
-.tabBtn li:hover,.tabNameList li:hover {
+.tabBtn li:hover, .tabNameList li:hover {
     background-color: #E3E4E5; 
 }
 /* 产品数量&加入购物车 */

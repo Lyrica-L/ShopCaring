@@ -30,13 +30,13 @@
     background: #f3f3f3;
 }
 .cartWrap ul {padding: 0 0 20px 14px; }
-.cartWrap ul li,.goodsWrap ul li {float: left; }
-.cartWrap ul li.cwli_1,.goodsWrap ul li.gwli_1 {width: 149px}
-.cartWrap ul li.cwli_2,.goodsWrap ul li.gwli_2 {width: 480px; }
-.cartWrap ul li.cwli_3,.goodsWrap ul li.gwli_3 {width: 132px; text-align: right}
-.cartWrap ul li.cwli_4,.goodsWrap ul li.gwli_4 {width: 100px; text-align: center; margin-left: 48px}
-.cartWrap ul li.cwli_5,.goodsWrap ul li.gwli_5 {width: 115px; text-align: right; }
-.cartWrap ul li.cwli_6,.goodsWrap ul li.gwli_6 {margin-left: 50px}
+.cartWrap ul li, .goodsWrap ul li {float: left; }
+.cartWrap ul li.cwli_1, .goodsWrap ul li.gwli_1 {width: 149px}
+.cartWrap ul li.cwli_2, .goodsWrap ul li.gwli_2 {width: 480px; }
+.cartWrap ul li.cwli_3, .goodsWrap ul li.gwli_3 {width: 132px; text-align: right}
+.cartWrap ul li.cwli_4, .goodsWrap ul li.gwli_4 {width: 100px; text-align: center; margin-left: 48px}
+.cartWrap ul li.cwli_5, .goodsWrap ul li.gwli_5 {width: 115px; text-align: right; }
+.cartWrap ul li.cwli_6, .goodsWrap ul li.gwli_6 {margin-left: 50px}
 .cartWrap ul li.cwli_1 input {float: left; margin: 19px 10px 0 0; }
 
 /* 购物车列表主体部分 */
@@ -68,7 +68,7 @@
     margin-top: -5px; 
     border: 1px solid #cacbcb; 
 }
-.editGoodsNum input.a,.editGoodsNum input.c {
+.editGoodsNum input.a, .editGoodsNum input.c {
     float: left;
     width: 20px; height: 28px;
     border: 0;
@@ -92,7 +92,7 @@
 .cartFooter ul {
     margin: 23px 0 0 13px;
 }
-.cartFooter ul input,.cartFooter ul label,.cartFooter ul p {float: left; margin-right: 13px;}
+.cartFooter ul input, .cartFooter ul label, .cartFooter ul p {float: left; margin-right: 13px;}
 .cartFooter ul input {margin-top: 2px;}
 .cartFooter ul p {cursor: pointer;}
 .checkGoodsNum {
