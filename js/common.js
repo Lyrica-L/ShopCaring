@@ -1,9 +1,11 @@
 /**
  *name：公共方法
  *date：2018/02/07
- *author：Liu Li
+ *author：Lyrica
  *remarks：null
  */
-function gId(n){
+
+// 下面是为原生js封装的公用方法，jq不需要
+/*function gId(n){
     return document.getElementById(n);
-}
+}*/
