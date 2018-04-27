@@ -1,209 +1,186 @@
-/****************
+/**************
 *name：产品详情页
 *date：2018/02/02
-*author：Lyrica
+*author：刘丽
 *remarks：null
 */
 
 /* 左边产品图片 */
-.goodsImgWrap {
-    float: left; width: 500px; height: 600px;
+.goodsImgWrap{
+    width: 500px;height: 600px;float: left;
 }
 /* 产品大图 */
-.bigImgDiv {
-    clear: both; position: relative;
-    width: 500px; height: 500px;
-    border: 1px solid #ddd;
+.bigImgDiv{
+    width: 500px;height: 500px;
+    border:1px solid #ddd;clear: both;position: relative;
 }
-.bigImgDiv img {
-    width: 500px; height: 500px;
+.bigImgDiv img{
+    width: 500px;height: 500px;
 }
 /* 大图上的半透明块 */
-.mouseMoveDiv {
-    position: absolute; top: 0;
-    width: 220px; height: 220px;
-    background: #FBB854;
-    opacity: 0.5;
-    cursor: move;
+.mouseMoveDiv{
+    width: 220px;height: 220px;
+    background: #FBB854;opacity: 0.5;
+    cursor: move;position: absolute;top:0
 }
 /* 局部放大框 */
-.localShowImgWrap {
-    display: none;
-    position: absolute; top: 0; right: -603px;
-    width: 600px; height: 600px;
-    border: 1px solid #ddd;
-    background: #e6e6ed;
-    overflow: hidden;
+.localShowImgWrap{
+    width: 600px;height: 600px;
+    position: absolute;top:0;right:-603px;background: #e6e6ed;
+    border:1px solid #ddd;display: none;overflow: hidden;
 }
-.bigImgDiv:hover .localShowImgWrap {
-    display: block; 
+.bigImgDiv:hover .localShowImgWrap{
+    display: block;
 }
 /* 产品小图 */
-.smallImgList {
-    position: relative; width: 500px; margin: 0 auto;
+.smallImgList{
+    width: 500px;margin: 0 auto;position: relative;
 }
-.smallImgList label,.smallImgList span {
-    display: block;
-    position: absolute; top: 10px;
-    width: 30px; height: 55px;
+.smallImgList label,.smallImgList span{
+    width:30px;height: 55px;
     background: #ddd;
-    cursor: pointer;
+    position: absolute;top:10px;
+    display: block;cursor: pointer;
 }
-.smallImgList label {
-    left: 0; 
+.smallImgList label{
+    left: 0;
 }
-.smallImgList span {
-    right: 0; 
+.smallImgList span{
+    right: 0;
 }
-.smallImgList label:hover,.smallImgList span:hover {
-    background: #666; 
+.smallImgList label:hover,.smallImgList span:hover{
+    background: #666;
 }
-.smallImgList ul {
-    display: block;
-    position: absolute; top: 10px; left: 40px;
-    width: 400px; height: 55px;
+.smallImgList ul{
+    width: 400px;height: 55px;
+    display: block;position: absolute;top:10px;left: 40px;
     overflow: hidden;
 }
-.smallImgList ul li {
-    float: left;
-    width: 50px; height: 50px;
-    margin-right: 10px;
-    border: 2px solid #fff; 
+.smallImgList ul li{
+    width: 50px;height: 50px;float: left;margin-right: 10px;
+    border: 2px solid #fff;
 }
-.smallImgList ul li:hover {
-    border: 2px solid #f00; 
+.smallImgList ul li:hover{
+    border: 2px solid #f00;
 }
-.smallImgList ul li img {
-    width: 50px; height: 50px; 
+.smallImgList ul li img{
+    width: 50px;height: 50px;
 }
 /* 右边产品信息 */
-.goodsInfoWrap {
-    float: right;
-    width: 779px; height: 400px;
+.goodsInfoWrap{
+    width: 779px;height:400px;float: right;
 }
-.goodsInfoWrap h1 {
-    font-size: 22px; font-weight: bold; color: #666666;
+.goodsInfoWrap h1{
+    font-size: 22px;color: #666666;font-weight: bold;
 }
-.inforList {
-    clear: both; overflow: hidden; margin-bottom: 20px; 
+.inforList{
+    clear: both;overflow: hidden;margin-bottom: 20px;
 }
-.inforList li {
-    font-size: 14px; color: #f00; 
+.inforList li{
+    font-size: 14px;color: #f00;
 }
 /* 配送地址 */
-.addressMenuTitle {
+.addressMenuTitle{
+    width: 470px;height: 26px;
+    font-size: 14px;color: #666;
     position: relative;
-    width: 470px; height: 26px;
-    font-size: 14px;
-    color: #666;
     overflow: hidden;
 }
-.addressMenuTitle p {
-    float: left; width: 60px; line-height: 32px;
+.addressMenuTitle p{
+    width: 60px;float: left;line-height: 32px;
 }
-.addressMenuTitle ul {
+.addressMenuTitle ul{
     float: left;
-    padding: 5px 28px 0 5px;
-    border: 1px solid #666; border-bottom: 0;
-    background-image: url("../../imgs/icon_5.jpg"); 
-    background-repeat: no-repeat; 
-    background-position: center right; 
-    background-color: #fff; 
-    cursor: pointer; 
-}
-.addressMenuTitle ul li {
-    float: left; padding-right: 6px; 
-}
-/* 地址选项 */
-.addressMenuList {
-    padding: 10px;
-    width: 380px;
-    border: 1px solid #666;
-    margin: -1px 0 0 60px;
-}
-.addressMenuList h1 {
-    width: 100%; height: 25px;
-    margin: 24px 0 15px 0; 
-    font-size: 14px; font-weight: normal;
-    line-height: 25px;
-    background-image: url("../../imgs/icon_5.jpg"); 
-    background-repeat: no-repeat; 
-    background-position: center right; 
-}
-/* 三个tab按钮 */
-.tabBtn {
-    width: 100%; height: 26px; margin-bottom: 12px; 
-}
-.tabBtn ul {
-    display: block;
-    height: 24px; 
-    border-bottom: 2px solid #EDD28B;
-}
-.tabBtn ul li {
-    float: left;
-    height: 24px;
-    padding: 0 11px;
-    border: 1px solid #666;
-    margin-right: 10px;
-    line-height: 24px;
-    font-size: 14px; font-weight: bold;
-    color: #005AB4;
+    border:1px solid #666;border-bottom: 0;padding: 5px 28px 0 5px;
+    background-image: url("../../imgs/icon_5.jpg");
+    background-repeat: no-repeat;
+    background-position: center right;
     background-color: #fff;
     cursor: pointer;
 }
-.tabBtn li.yellowBorder {
-    margin-top: -1px;
-    border: 2px solid #EDD28B;
-    border-bottom: 2px solid #fff;
+.addressMenuTitle ul li{
+    float: left;padding-right: 6px;
 }
-/* 省市县备选列表 */
-.tabNameList {
-    width: 100%; overflow: hidden; 
+/* 地址选项 */
+.addressMenuList{
+    width: 380px;margin: -1px 0 0 60px;
+    border: 1px solid #666;
+    padding: 10px;
 }
-.tabNameList ul li {
-    float: left;
-    width: 80px; height: 18px;
-    margin-bottom: 5px;
-    overflow: hidden; text-overflow: ellipsis;
-    white-space: nowrap;
-    color: #666;
+.addressMenuList h1{
+    width: 100%;height: 25px;line-height: 25px;
+    margin: 24px 0 15px 0;
+    font-size: 14px;font-weight: normal;
+    background-image: url("../../imgs/icon_5.jpg");
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+/* 三个tab按钮 */
+.tabBtn{
+    width: 100%;height: 26px;margin-bottom: 12px;
+}
+.tabBtn ul{
+    height: 24px;
+    border-bottom:2px solid #EDD28B;display: block;
+}
+.tabBtn ul li{
+    height: 24px;float: left;line-height: 24px;
+    background-color: #fff;
+    font-size: 14px;color: #005AB4;font-weight: bold;
+    padding:0 11px;
+    border:1px solid #666;
+    margin-right: 10px;
     cursor: pointer;
 }
-.tabBtn li:hover,.tabNameList li:hover {
-    background-color: #E3E4E5; 
+.tabBtn li.yellowBorder{
+    border:2px solid #EDD28B;
+    border-bottom: 2px solid #fff;
+    margin-top: -1px;
+}
+/* 省市县备选列表 */
+.tabNameList{
+    width: 100%;overflow: hidden;
+}
+.tabNameList ul li{
+    width: 80px;height: 18px;
+    float: left;
+    margin-bottom: 5px;
+    overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+    cursor: pointer;
+    color: #666;
+}
+.tabBtn li:hover,.tabNameList li:hover{
+    background-color: #E3E4E5;
 }
 /* 产品数量&加入购物车 */
-.gotoShopCar {
-    height: 60px; 
-    margin: 21px 0 0 70px; 
+.gotoShopCar{
+    height: 60px;
+    margin: 21px 0 0 70px;
 }
-.numToCar {
+.numToCar{
+    width: 58px;height: 48px;
     float: left;
-    width: 58px; height: 48px;
     border: 1px solid #666;
-    overflow: hidden; 
+    overflow: hidden;
 }
-.numToCar input.g_a {
-    float: left;
-    width: 40px; height: 48px;
+.numToCar input.g_a{
+    width: 40px;height: 48px;float: left;
     border: 0;
-    text-align: center; 
+    text-align: center;
 }
-.numToCar input.g_b, .numToCar input.g_c {
-    float: left;
-    width: 18px; height: 25px;
-    border: 0;
+.numToCar input.g_b,.numToCar input.g_c{
+    width: 18px;height: 25px;float: left;border: 0;
     border-left: 1px solid #666;
     border-bottom: 1px solid #666;
 }
-.numToCarBtn {
-    float: left;
-    width: 157px; height: 50px;
+.numToCarBtn{
+    width: 157px;height: 50px;border: 0;
     margin-left: 20px;
-    border: 0;
-    font-size: 22px; font-weight: bold;
-    text-align: center; line-height: 50px;
-    color: #fff;
     background: #f00;
+    font-size: 22px;color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
     cursor: pointer;
+    float: left;
 }
