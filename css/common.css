@@ -5,57 +5,23 @@
 *remarks：null
 */
 
-.mT_10 {
-    margin-top: 10px;
-}
+.mT_10 {margin-top: 10px;}
+.mT_5 {margin-top: 5px;}
+.mL_10 {margin-left: 10px;}
+.mR_10 {margin-right: 10px;}
+.fl {float: left; }
+.fr {float: right;}
+.cle {clear: both;}
+.pr {position: relative;}
+.pb {position: absolute;}
+.redFontColor {color: #f00;}
+.songFont {font-family: SimSun, sans-serif;}
 
-.mT_5 {
-    margin-top: 5px;
-}
-
-.mL_10 {
-    margin-left: 10px;
-}
-
-.mR_10 {
-    margin-right: 10px;
-}
-
-.fl {
-    float: left;
-}
-
-.fr {
-    float: right;
-}
-
-.cle {
-    clear: both;
-}
-
-.pr {
-    position: relative;
-}
-
-.pb {
-    position: absolute;
-}
-
-.redFontColor {
-    color: #f00;
-}
-
-.songFont {
-    font-family: SimSun, sans-serif;
-}
-
-.redBg {
-    background: #ff0000 !important;
-}
-
+.redBg {background: #ff0000 !important;}
 .cle:after {
-    content: " ";
     display: block;
-    height: 0;
     clear: both;
+    height: 0;
+    visibility: hidden;
+    content: ".";
 }
