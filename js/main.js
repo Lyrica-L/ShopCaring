@@ -1,7 +1,7 @@
 /**
  *name：整个项目的入口文件
  *date：2018/02/07
- *author：Lyrica
+ *author：Liu Li
  *remarks：null
  */
 

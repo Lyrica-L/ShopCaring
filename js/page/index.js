@@ -1,7 +1,7 @@
-/************************
+/**
  *name：首页-index的JS文件
  *date：2018/02/08
- *author：Lyrica
+ *author：Liu Li
  *remarks：null
  */
 /*
@@ -69,6 +69,23 @@ function createSubNavMenuFn(){
         });
 }
 
+// 产品导航 subNavId 绑定事件
+function subNavMenuFn(){
+    $('#subNavId')
+        .children()
+        .on({
+            mouseover:function(){
+                $(this)
+                    .children('.popUpDiv')
+                    .show();
+            },
+            mouseout:function(){
+                $(this)
+                    .children('.popUpDiv')
+                    .hide();
+            }
+        });
+}
 // 首页 轮播图
 function sliderWrapFn(){
     var _data           = DATA_temp.imgUrl;
