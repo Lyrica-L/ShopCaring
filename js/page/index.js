@@ -67,7 +67,7 @@ function createSubNavMenuFn() {
 }
 
 // 产品导航 subNavId 绑定事件
-function subNavMenuFn() {
+/*function subNavMenuFn() {
     $('#subNavId')
         .children()
         .on({
@@ -82,7 +82,7 @@ function subNavMenuFn() {
                     .hide();
             }
         });
-}
+}*/
 // 首页 轮播图
 function sliderWrapFn() {
     var _data    = DATA_temp.imgUrl;
@@ -131,44 +131,67 @@ function sliderWrapFn() {
     // 获取小白点列表的li节点，它是一个集合
     var _pBtn = _pointBtnId.children();
 
-    // 左按钮
-    _leftBtnId.on('click', function () {
+    // 图片、小白点 无方向切换
+    function imgMove(_inx){
+        var _val = "translate3d("+ -996 * _inx + "px"+", 0, 0)";
+        //_ulId.animate({left: valLeft + 'px'},"slow");
+        _ulId.css({"transform": _val, "transition-duration":"0.3s"});
+        _pBtn.eq(_inx).addClass('redBg').siblings().removeClass('redBg');
+    }
+
+    // 图片向后切换
+    function nextSliderFn(){
         if (_inx < (_dataLen - 1)) {
             _inx++;
-        } else {
+         } else {
             _inx = 0;
-        }
-        _ulId.css('left', -996 * _inx);
-        // 小白点的颜色跟随图片来切换
-        //_pBtn.eq(_inx).addClass('redBg').siblings().removeClass('redBg');
-        switchPointRedFn(_inx);
-    });
+         }
 
-    // 右按钮
-    _rightBtnId.on('click', function () {
-        if (_inx > 0) {
+        imgMove(_inx);
+    }
+
+    // 初始化
+    imgMove(0);
+
+    // 自动轮播
+    var autoTrans = setInterval(nextSliderFn,3000);
+
+    // 鼠标在图片上时停止轮播
+    _ulId.on({
+        mouseover: function(){
+            clearInterval(autoTrans);
+        },
+        mouseout: function(){
+            autoTrans = setInterval(nextSliderFn,3000);
+        }
+
+    })
+
+    // 点击左按钮 上一张
+    _leftBtnId.on('click', function () {
+        clearInterval(autoTrans);
+        if(_inx > 0) {
             _inx--;
         } else {
-            _inx = (_dataLen - 1);
+            _inx = _dataLen - 1;
         }
-        _ulId.css('left', -996 * _inx);
-        // 小白点的颜色跟随图片来切换
-        //_pBtn.eq(_inx).addClass('redBg').siblings().removeClass('redBg');
-        switchPointRedFn(_inx);
+
+        imgMove(_inx);
+        autoTrans = setInterval(nextSliderFn,3000);
     });
 
-    function switchPointRedFn(_n) {
-        _pBtn.eq(_n).addClass('redBg').siblings().removeClass('redBg');
-    }
+    // 点击右按钮 下一张
+    _rightBtnId.on('click', function () {
+        clearInterval(autoTrans);
+        nextSliderFn();
+        autoTrans = setInterval(nextSliderFn,3000);
+    });
 
     // 小白点的点击事件
     _pBtn.on('click', function () {
         var _this = $(this);
         _inx      = _this.index();
-        _ulId.css('left', -996 * _inx);
-        _this
-            .addClass('redBg')
-            .siblings()
-            .removeClass('redBg');
+
+        imgMove(_inx);
     });
 }

@@ -7,11 +7,11 @@
 
 var DATA_temp = {
     imgUrl:[
-        "imgs/temp/1.jpg",
-        "imgs/temp/2.jpg",
-        "imgs/temp/3.jpg",
-        "imgs/temp/4.jpg",
-        "imgs/temp/3.jpg"
+        "imgs/temp/pic_1.jpg",
+        "imgs/temp/pic_2.jpg",
+        "imgs/temp/pic_3.jpg",
+        "imgs/temp/pic_4.jpg",
+        "imgs/temp/pic_5.jpg"
     ],
     subNavData:[
         {
